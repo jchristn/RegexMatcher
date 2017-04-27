@@ -2,7 +2,7 @@
 
 [![][nuget-img]][nuget]
 
-[nuget]:     https://www.nuget.org/packages/RegexMatcher.dll
+[nuget]:     https://www.nuget.org/packages/RegexMatcher/
 [nuget-img]: https://badge.fury.io/nu/Object.svg
 
 ## Regex Matching Library in C#
@@ -51,6 +51,21 @@ static void Main(string[] args)
     else Console.WriteLine("Not found");
 }
 ```
+
+## Regular Expression Notes
+RegexMatcher uses standard C#/.NET regular expressions.  I tested primarily against simple regular expressions with values that would be encountered as raw URLs/paths and it worked well.  
+
+Some notes that I found helpful which may help you too:
+- ```^``` is a starting anchor, useful when indicating that the pattern must be matched at the start of the input
+- ```$``` is an ending anchor, useful when indicating that the pattern mst be matched at the end of the input
+- ```(.*?)``` will match any input string
+- ```\\d+``` will match any number
+- ```\\``` the escape character must be used when matching certain characters as a literal
+- ```?``` marks the previous character or expression as optional
+
+Helpful links:
+- https://msdn.microsoft.com/en-us/library/gg578045(v=vs.110).aspx
+- https://msdn.microsoft.com/en-us/library/h5181w5w(v=vs.110).aspx
 
 ## Version History
 
