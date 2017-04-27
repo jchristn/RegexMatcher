@@ -1,0 +1,8 @@
+d:\code\misc\RegexMatcher\Test\bin\Debug\Test.exe.config
+d:\code\misc\RegexMatcher\Test\bin\Debug\Test.exe
+d:\code\misc\RegexMatcher\Test\bin\Debug\Test.pdb
+d:\code\misc\RegexMatcher\Test\bin\Debug\RegexMatcher.dll
+d:\code\misc\RegexMatcher\Test\bin\Debug\RegexMatcher.pdb
+d:\code\misc\RegexMatcher\Test\obj\Debug\Test.csprojResolveAssemblyReference.cache
+d:\code\misc\RegexMatcher\Test\obj\Debug\Test.exe
+d:\code\misc\RegexMatcher\Test\obj\Debug\Test.pdb

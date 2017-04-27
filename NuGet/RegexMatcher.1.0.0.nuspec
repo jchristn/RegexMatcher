@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>RegexMatcher</id>
+        <version>1.0.0</version>
+        <title>RegexMatcher</title>
+        <authors>jchristn</authors>
+        <owners>jchristn</owners>
+        <licenseUrl>https://github.com/jchristn/RegexMatcher/blob/master/LICENSE.txt</licenseUrl>
+        <projectUrl>https://github.com/jchristn/RegexMatcher</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>RegexMatcher is a library that maintains an internal dictionary of type &lt;Regex, object&gt;.  Populate the dictionary with a series of Regex and the objects that should be returned when a match is found while evaluating some input.</description>
+        <summary>RegexMatcher is a library that maintains an internal dictionary of type &lt;Regex, object&gt;.  Populate the dictionary with a series of Regex and the objects that should be returned when a match is found w</summary>
+        <releaseNotes>Initial release</releaseNotes>
+        <copyright>(c)2017 Marauder Software Inc</copyright>
+        <tags>regex match regular expression</tags>
+    </metadata>
+    <files>
+        <file src="..\RegexMatcher\bin\Release\RegexMatcher.dll" target="lib\RegexMatcher.dll" />
+        <file src="..\RegexMatcher\bin\Release\RegexMatcher.pdb" target="lib\RegexMatcher.pdb" />
+    </files>
+</package>
