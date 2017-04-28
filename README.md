@@ -45,7 +45,7 @@ static void Main(string[] args)
     { // val is "bar with two children" }
 
     if (matcher.Match("/foo/36", out val))
-    { // val is 36 }
+    { // val is "foo with id" }
 
     if (matcher.Match("/unknown", out val)) { }
     else Console.WriteLine("Not found");
