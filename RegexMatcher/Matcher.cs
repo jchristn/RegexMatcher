@@ -19,10 +19,10 @@ namespace RegexMatcher
         /// </summary>
         public Matcher()
         {
-            regexDict = new Dictionary<Regex, object>();
-            dictLock = new object();
+            _RegexDict = new Dictionary<Regex, object>();
+            _RegexDictLock = new object();
         }
-         
+
         #endregion
 
         #region Public-Members
@@ -31,8 +31,8 @@ namespace RegexMatcher
 
         #region Private-Members
 
-        private Dictionary<Regex, object> regexDict;
-        private readonly object dictLock;
+        private Dictionary<Regex, object> _RegexDict;
+        private readonly object _RegexDictLock;
 
         #endregion
 
@@ -46,10 +46,10 @@ namespace RegexMatcher
         public void Add(Regex regex, object val)
         {
             if (regex == null) throw new ArgumentNullException(nameof(regex));
-            
-            lock (dictLock)
+
+            lock (_RegexDictLock)
             {
-                regexDict.Add(regex, val);
+                _RegexDict.Add(regex, val);
             }
         }
 
@@ -61,9 +61,9 @@ namespace RegexMatcher
         {
             if (regex == null) throw new ArgumentNullException(nameof(regex));
 
-            lock (dictLock)
+            lock (_RegexDictLock)
             {
-                if (regexDict.ContainsKey(regex)) regexDict.Remove(regex);
+                if (_RegexDict.ContainsKey(regex)) _RegexDict.Remove(regex);
             }
         }
 
@@ -73,9 +73,9 @@ namespace RegexMatcher
         /// <returns>Dictionary containing regular expression and return value that is returned upon match.</returns>
         public Dictionary<Regex, object> Get()
         {
-            lock (dictLock)
+            lock (_RegexDictLock)
             {
-                return regexDict;
+                return _RegexDict;
             }
         }
 
@@ -88,9 +88,9 @@ namespace RegexMatcher
         {
             if (regex == null) return false;
 
-            lock (dictLock)
+            lock (_RegexDictLock)
             {
-                if (regexDict.ContainsKey(regex)) return true;
+                if (_RegexDict.ContainsKey(regex)) return true;
             }
 
             return false;
@@ -103,9 +103,9 @@ namespace RegexMatcher
         /// <returns>True if found.</returns>
         public bool ValueExists(object val)
         {
-            lock (dictLock)
+            lock (_RegexDictLock)
             {
-                foreach (KeyValuePair<Regex, object> curr in regexDict)
+                foreach (KeyValuePair<Regex, object> curr in _RegexDict)
                 {
                     if (curr.Value == val) return true;
                 }
@@ -125,9 +125,9 @@ namespace RegexMatcher
             if (String.IsNullOrEmpty(inVal)) throw new ArgumentNullException(nameof(inVal));
             val = null;
 
-            lock (dictLock)
+            lock (_RegexDictLock)
             {
-                foreach (KeyValuePair<Regex, object> curr in regexDict)
+                foreach (KeyValuePair<Regex, object> curr in _RegexDict)
                 {
                     Match match = curr.Key.Match(inVal);
                     if (match.Success)

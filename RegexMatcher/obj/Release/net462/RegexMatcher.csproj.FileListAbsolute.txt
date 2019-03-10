@@ -1,0 +1,8 @@
+C:\code\Misc\RegexMatcherRetarget\RegexMatcher\bin\Release\net462\RegexMatcher.dll
+C:\code\Misc\RegexMatcherRetarget\RegexMatcher\bin\Release\net462\RegexMatcher.pdb
+C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Release\net462\RegexMatcher.csprojAssemblyReference.cache
+C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Release\net462\RegexMatcher.csproj.CoreCompileInputs.cache
+C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Release\net462\RegexMatcher.AssemblyInfoInputs.cache
+C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Release\net462\RegexMatcher.AssemblyInfo.cs
+C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Release\net462\RegexMatcher.dll
+C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Release\net462\RegexMatcher.pdb

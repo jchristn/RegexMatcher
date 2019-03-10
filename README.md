@@ -15,11 +15,12 @@ For a sample app exercising the library please refer to the Test project.
 
 Do you need help or have feedback?  Contact me at joel at maraudersoftware.com dot com or file an issue here!
 
-## New in v1.0.0
+## New in v1.0.1
 
-- initial release
+- Retarget to support both .NET Core 2.0 and .NET Framework 4.6.2.
 
 ## Important Notes
+
 Always add Regex and return object in order from most specific to least specific.  The first match found will be used and the associated object will be returned.
 
 ## Simple Example
@@ -53,9 +54,11 @@ static void Main(string[] args)
 ```
 
 ## Regular Expression Notes
+
 RegexMatcher uses standard C#/.NET regular expressions.  I tested primarily against simple regular expressions with values that would be encountered as raw URLs/paths and it worked well.  
 
 Some notes that I found helpful which may help you too:
+
 - ```^``` is a starting anchor, useful when indicating that the pattern must be matched at the start of the input
 - ```$``` is an ending anchor, useful when indicating that the pattern mst be matched at the end of the input
 - ```(.*?)``` will match any input string
@@ -64,9 +67,13 @@ Some notes that I found helpful which may help you too:
 - ```?``` marks the previous character or expression as optional
 
 Helpful links:
+
 - https://msdn.microsoft.com/en-us/library/gg578045(v=vs.110).aspx
 - https://msdn.microsoft.com/en-us/library/h5181w5w(v=vs.110).aspx
 
 ## Version History
 
 Notes from previous versions (starting with v1.0.0) will be moved here.
+
+v1.0.x
+- initial release

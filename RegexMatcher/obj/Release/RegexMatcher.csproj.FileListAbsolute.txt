@@ -1,4 +1,0 @@
-d:\code\misc\RegexMatcher\RegexMatcher\bin\Release\RegexMatcher.dll
-d:\code\misc\RegexMatcher\RegexMatcher\bin\Release\RegexMatcher.pdb
-d:\code\misc\RegexMatcher\RegexMatcher\obj\Release\RegexMatcher.dll
-d:\code\misc\RegexMatcher\RegexMatcher\obj\Release\RegexMatcher.pdb

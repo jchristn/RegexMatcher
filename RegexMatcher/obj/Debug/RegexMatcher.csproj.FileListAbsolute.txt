@@ -1,5 +1,0 @@
-d:\code\misc\RegexMatcher\RegexMatcher\bin\Debug\RegexMatcher.dll
-d:\code\misc\RegexMatcher\RegexMatcher\bin\Debug\RegexMatcher.pdb
-d:\code\misc\RegexMatcher\RegexMatcher\obj\Debug\RegexMatcher.csprojResolveAssemblyReference.cache
-d:\code\misc\RegexMatcher\RegexMatcher\obj\Debug\RegexMatcher.dll
-d:\code\misc\RegexMatcher\RegexMatcher\obj\Debug\RegexMatcher.pdb
