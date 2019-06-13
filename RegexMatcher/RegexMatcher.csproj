@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>Joel Christner</Authors>
     <Company>Joel Christner</Company>
     <Copyright>(c)2019 Joel Christner</Copyright>
@@ -13,6 +13,8 @@
     <RepositoryType>Github</RepositoryType>
     <PackageTags>regex match regular expression</PackageTags>
     <PackageReleaseNotes>Retarget to both .NET Core 2.0 and .NET Framework 4.6.2</PackageReleaseNotes>
+    <Description>Regular expression matching library.</Description>
+    <PackageIconUrl>https://raw.githubusercontent.com/jchristn/regexmatcher/master/assets/icon.ico</PackageIconUrl>
   </PropertyGroup>
 
 </Project>

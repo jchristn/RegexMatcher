@@ -1,0 +1,12 @@
+C:\Code\Misc\RegexMatcher\Test\bin\Release\net462\Test.exe.config
+C:\Code\Misc\RegexMatcher\Test\bin\Release\net462\Test.exe
+C:\Code\Misc\RegexMatcher\Test\bin\Release\net462\Test.pdb
+C:\Code\Misc\RegexMatcher\Test\bin\Release\net462\RegexMatcher.dll
+C:\Code\Misc\RegexMatcher\Test\bin\Release\net462\RegexMatcher.pdb
+C:\Code\Misc\RegexMatcher\Test\obj\Release\net462\Test.csprojAssemblyReference.cache
+C:\Code\Misc\RegexMatcher\Test\obj\Release\net462\Test.csproj.CoreCompileInputs.cache
+C:\Code\Misc\RegexMatcher\Test\obj\Release\net462\Test.AssemblyInfoInputs.cache
+C:\Code\Misc\RegexMatcher\Test\obj\Release\net462\Test.AssemblyInfo.cs
+C:\Code\Misc\RegexMatcher\Test\obj\Release\net462\Test.csproj.CopyComplete
+C:\Code\Misc\RegexMatcher\Test\obj\Release\net462\Test.exe
+C:\Code\Misc\RegexMatcher\Test\obj\Release\net462\Test.pdb

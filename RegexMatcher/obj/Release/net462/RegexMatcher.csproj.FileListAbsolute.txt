@@ -6,3 +6,11 @@ C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Release\net462\RegexMatcher.A
 C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Release\net462\RegexMatcher.AssemblyInfo.cs
 C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Release\net462\RegexMatcher.dll
 C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Release\net462\RegexMatcher.pdb
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Release\net462\RegexMatcher.dll
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Release\net462\RegexMatcher.pdb
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\net462\RegexMatcher.csprojAssemblyReference.cache
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\net462\RegexMatcher.csproj.CoreCompileInputs.cache
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\net462\RegexMatcher.AssemblyInfoInputs.cache
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\net462\RegexMatcher.AssemblyInfo.cs
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\net462\RegexMatcher.dll
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\net462\RegexMatcher.pdb
