@@ -12,3 +12,4 @@ C:\Code\Misc\RegexMatcher\Test\obj\Release\netcoreapp2.2\Test.AssemblyInfo.cs
 C:\Code\Misc\RegexMatcher\Test\obj\Release\netcoreapp2.2\Test.csproj.CopyComplete
 C:\Code\Misc\RegexMatcher\Test\obj\Release\netcoreapp2.2\Test.dll
 C:\Code\Misc\RegexMatcher\Test\obj\Release\netcoreapp2.2\Test.pdb
+C:\Code\Misc\RegexMatcher\Test\bin\Release\netcoreapp2.2\RegexMatcher.xml

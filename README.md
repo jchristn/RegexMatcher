@@ -15,9 +15,9 @@ For a sample app exercising the library please refer to the Test project.
 
 Do you need help or have feedback?  Contact me at joel at maraudersoftware.com dot com or file an issue here!
 
-## New in v1.0.1
+## New in v1.0.3
 
-- Retarget to support both .NET Core 2.0 and .NET Framework 4.6.2.
+- XML documentation
 
 ## Important Notes
 
@@ -73,7 +73,4 @@ Helpful links:
 
 ## Version History
 
-Notes from previous versions (starting with v1.0.0) will be moved here.
-
-v1.0.x
-- initial release
+Refer to CHANGELOG.md for version history.

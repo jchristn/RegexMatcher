@@ -16,3 +16,4 @@ C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\netstandard2.0\RegexMatcher.A
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\netstandard2.0\RegexMatcher.AssemblyInfo.cs
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\netstandard2.0\RegexMatcher.dll
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\netstandard2.0\RegexMatcher.pdb
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Release\netstandard2.0\RegexMatcher.xml

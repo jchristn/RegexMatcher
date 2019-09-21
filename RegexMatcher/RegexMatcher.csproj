@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net462</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <Authors>Joel Christner</Authors>
     <Company>Joel Christner</Company>
     <Copyright>(c)2019 Joel Christner</Copyright>
-    <PackageLicenseUrl>https://github.com/jchristn/RegexMatcher/blob/master/LICENSE.TXT</PackageLicenseUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/jchristn/regexmatcher</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jchristn/regexmatcher</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
@@ -15,6 +15,18 @@
     <PackageReleaseNotes>Retarget to both .NET Core 2.0 and .NET Framework 4.6.2</PackageReleaseNotes>
     <Description>Regular expression matching library.</Description>
     <PackageIconUrl>https://raw.githubusercontent.com/jchristn/regexmatcher/master/assets/icon.ico</PackageIconUrl>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+    <DocumentationFile>C:\Code\Misc\RegexMatcher\RegexMatcher\RegexMatcher.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
