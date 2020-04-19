@@ -1,9 +1,6 @@
 ﻿# RegexMatcher
 
-[![][nuget-img]][nuget]
-
-[nuget]:     https://www.nuget.org/packages/RegexMatcher/
-[nuget-img]: https://badge.fury.io/nu/Object.svg
+[![NuGet Version](https://img.shields.io/nuget/v/RegexMatcher.svg?style=flat)](https://www.nuget.org/packages/RegexMatcher/) [![NuGet](https://img.shields.io/nuget/dt/RegexMatcher.svg)](https://www.nuget.org/packages/RegexMatcher) 
 
 ## Regex Matching Library in C#
 
