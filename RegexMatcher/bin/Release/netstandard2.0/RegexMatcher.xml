@@ -9,6 +9,11 @@
             Library to store regular expressions with a supplied object, and return that object when evaluating an input and a matching regular expression is found.
             </summary>
         </member>
+        <member name="F:RegexMatcher.Matcher.MatchPreference">
+            <summary>
+            Specify which sorting mode should be used when evaluating for a match.
+            </summary>
+        </member>
         <member name="M:RegexMatcher.Matcher.#ctor">
             <summary>
             Instantiates the object.
@@ -54,6 +59,26 @@
             <param name="inVal">The string to evaluate.</param>
             <param name="val">The object value mapped to the regular expression in the evaluation dictionary.</param>
             <returns>True if a match was found.</returns>
+        </member>
+        <member name="T:RegexMatcher.MatchPreferenceType">
+            <summary>
+            Specify how evaluation for a match should behave when multiple matches exist. 
+            </summary>
+        </member>
+        <member name="F:RegexMatcher.MatchPreferenceType.First">
+            <summary>
+            When evaluating for a match and multiple matches are identified, return the first match.
+            </summary>
+        </member>
+        <member name="F:RegexMatcher.MatchPreferenceType.LongestFirst">
+            <summary>
+            When evaluating for a match and multiple matches are identified, return the longest match.
+            </summary>
+        </member>
+        <member name="F:RegexMatcher.MatchPreferenceType.ShortestFirst">
+            <summary>
+            When evaluating for a match and multiple matches are identified, return the shortest match.
+            </summary>
         </member>
     </members>
 </doc>

@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "RegexMatcher/1.0.5": {
+        "runtime": {
+          "RegexMatcher.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RegexMatcher/1.0.5": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

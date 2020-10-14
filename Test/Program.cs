@@ -10,24 +10,25 @@ namespace TestNetCore
 {
     class Program
     {
+        static Matcher _Matcher = new Matcher();
+        static bool _RunForever = true;
+
         static void Main(string[] args)
         {
-            Matcher matcher = new Matcher();
-            bool runForever = true;
             string userInput;
             object val;
 
             // preload a few
-            matcher.Add(new Regex("^/foo/\\d+$"), "foo with id");
-            matcher.Add(new Regex("^/foo/?$"), "foo with optional slash");
-            matcher.Add(new Regex("^/foo$"), "foo alone");
-            matcher.Add(new Regex("^/bar/(.*?)/(.*?)/?$"), "bar with two children");
-            matcher.Add(new Regex("^/bar/(.*?)/?$"), "bar with one child");
-            matcher.Add(new Regex("^/bar/\\d+$"), "bar with id");
-            matcher.Add(new Regex("^/bar/?$"), "bar with optional slash");
-            matcher.Add(new Regex("^/bar$"), "bar alone");
+            _Matcher.Add(new Regex("^/foo/\\d+$"), "foo with id");
+            _Matcher.Add(new Regex("^/foo/?$"), "foo with optional slash");
+            _Matcher.Add(new Regex("^/foo$"), "foo alone");
+            _Matcher.Add(new Regex("^/bar/(.*?)/(.*?)/?$"), "bar with two children");
+            _Matcher.Add(new Regex("^/bar/(.*?)/?$"), "bar with one child");
+            _Matcher.Add(new Regex("^/bar/\\d+$"), "bar with id");
+            _Matcher.Add(new Regex("^/bar/?$"), "bar with optional slash");
+            _Matcher.Add(new Regex("^/bar$"), "bar alone");
 
-            while (runForever)
+            while (_RunForever)
             {
                 Console.Write("Command [? for help] > ");
                 userInput = Console.ReadLine();
@@ -36,39 +37,44 @@ namespace TestNetCore
                 switch (userInput)
                 {
                     case "q":
-                        runForever = false;
+                        _RunForever = false;
                         break;
 
                     case "?":
                         Menu();
                         break;
 
+                    case "pref":
+                        Console.Write("Preference [First|LongestFirst|ShortestFirst]: ");
+                        _Matcher.MatchPreference = (MatchPreferenceType)(Enum.Parse(typeof(MatchPreferenceType), Console.ReadLine()));
+                        break;
+
                     case "add":
-                        matcher.Add(
-                            new Regex(InputString("Regex", null, false)),
+                        _Matcher.Add(
+                            new Regex(InputString("Regex:", null, false)),
                             InputString("Value", null, true));
                         break;
 
                     case "del":
-                        matcher.Remove(
-                            new Regex(InputString("Regex", null, false)));
+                        _Matcher.Remove(
+                            new Regex(InputString("Regex:", null, false)));
                         break;
 
                     case "exists":
                         Console.WriteLine("Exists: " +
-                            matcher.Exists(
-                                new Regex(InputString("Regex", null, false))));
+                            _Matcher.Exists(
+                                new Regex(InputString("Regex:", null, false))));
                         break;
 
                     case "valexists":
                         Console.WriteLine("Exists: " +
-                            matcher.ValueExists(
-                                InputString("Value", null, true)));
+                            _Matcher.ValueExists(
+                                InputString("Value:", null, true)));
                         break;
 
                     case "match":
-                        if (matcher.Match(
-                            InputString("Input value", null, false),
+                        if (_Matcher.Match(
+                            InputString("Input value:", null, false),
                             out val))
                         {
                             Console.Write("Match found: ");
@@ -80,6 +86,19 @@ namespace TestNetCore
                             Console.WriteLine("No match found");
                         }
                         break;
+
+                    case "list":
+                        Dictionary<Regex, object> matches = _Matcher.Get();
+                        if (matches != null && matches.Count > 0)
+                        {
+                            Console.WriteLine("Added:");
+                            foreach (KeyValuePair<Regex, object> curr in matches)
+                            {
+                                Console.WriteLine("  " + curr.Key.ToString() + ": " + curr.Value);
+                            }
+                            Console.WriteLine();
+                        }
+                        break;
                 }
             }
         }
@@ -89,11 +108,13 @@ namespace TestNetCore
             Console.WriteLine("Available commands:");
             Console.WriteLine("  q          quit the application");
             Console.WriteLine("  ?          this menu");
+            Console.WriteLine("  pref       set match preference (currently " + _Matcher.MatchPreference.ToString() + ")");
             Console.WriteLine("  add        add regex to evaluation dictionary");
             Console.WriteLine("  del        remove regex from evaluation dictionary");
             Console.WriteLine("  exists     check if regex exists in evaluation dictionary");
             Console.WriteLine("  valexists  check if val exists in evaluation dictionary");
             Console.WriteLine("  match      perform a match and retrieve val for matching regex");
+            Console.WriteLine("  list       list the evaluation regular expressions and their values");
             Console.WriteLine("");
         }
 

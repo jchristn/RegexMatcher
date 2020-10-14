@@ -1,0 +1,8 @@
+C:\code\Misc\RegexMatcher\RegexMatcher\bin\Debug\netcoreapp2.0\RegexMatcher.deps.json
+C:\code\Misc\RegexMatcher\RegexMatcher\bin\Debug\netcoreapp2.0\RegexMatcher.dll
+C:\code\Misc\RegexMatcher\RegexMatcher\bin\Debug\netcoreapp2.0\RegexMatcher.pdb
+C:\code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netcoreapp2.0\RegexMatcher.csprojAssemblyReference.cache
+C:\code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netcoreapp2.0\RegexMatcher.AssemblyInfoInputs.cache
+C:\code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netcoreapp2.0\RegexMatcher.AssemblyInfo.cs
+C:\code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netcoreapp2.0\RegexMatcher.dll
+C:\code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netcoreapp2.0\RegexMatcher.pdb

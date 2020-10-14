@@ -11,7 +11,6 @@ C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\netstandard2.0\RegexMatcher.dep
 C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\netstandard2.0\RegexMatcher.dll
 C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\netstandard2.0\RegexMatcher.pdb
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netstandard2.0\RegexMatcher.csprojAssemblyReference.cache
-C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netstandard2.0\RegexMatcher.csproj.CoreCompileInputs.cache
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netstandard2.0\RegexMatcher.AssemblyInfoInputs.cache
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netstandard2.0\RegexMatcher.AssemblyInfo.cs
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netstandard2.0\RegexMatcher.dll

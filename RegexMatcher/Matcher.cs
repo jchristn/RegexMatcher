@@ -12,27 +12,30 @@ namespace RegexMatcher
     /// </summary>
     public class Matcher
     {
+        #region Public-Members
+
+        /// <summary>
+        /// Specify which sorting mode should be used when evaluating for a match.
+        /// </summary>
+        public MatchPreferenceType MatchPreference = MatchPreferenceType.First;
+
+        #endregion
+
+        #region Private-Members
+
+        private Dictionary<Regex, object> _RegexDict = new Dictionary<Regex, object>();
+        private readonly object _RegexDictLock = new object();
+
+        #endregion
+
         #region Constructors-and-Factories
 
         /// <summary>
         /// Instantiates the object.
         /// </summary>
         public Matcher()
-        {
-            _RegexDict = new Dictionary<Regex, object>();
-            _RegexDictLock = new object();
+        { 
         }
-
-        #endregion
-
-        #region Public-Members
-
-        #endregion
-
-        #region Private-Members
-
-        private Dictionary<Regex, object> _RegexDict;
-        private readonly object _RegexDictLock;
 
         #endregion
 
@@ -127,15 +130,49 @@ namespace RegexMatcher
 
             lock (_RegexDictLock)
             {
+                Regex bestMatch = null; 
+
                 foreach (KeyValuePair<Regex, object> curr in _RegexDict)
                 {
                     Match match = curr.Key.Match(inVal);
                     if (match.Success)
                     {
-                        val = curr.Value;
-                        return true;
+                        if (MatchPreference == MatchPreferenceType.First)
+                        {
+                            val = curr.Value;
+                            return true;
+                        }
+
+                        if (bestMatch == null)
+                        {
+                            bestMatch = curr.Key;
+                            val = curr.Value;
+                        }
+                        else
+                        {
+                            string regex = curr.Key.ToString();
+
+                            if (MatchPreference == MatchPreferenceType.LongestFirst)
+                            {
+                                if (curr.Key.ToString().Length > bestMatch.ToString().Length)
+                                {
+                                    bestMatch = curr.Key;
+                                    val = curr.Value;
+                                }
+                            }
+                            else if (MatchPreference == MatchPreferenceType.ShortestFirst)
+                            {
+                                if (curr.Key.ToString().Length < bestMatch.ToString().Length)
+                                {
+                                    bestMatch = curr.Key;
+                                    val = curr.Value;
+                                }
+                            }
+                        } 
                     }
                 }
+
+                if (bestMatch != null) return true;
             }
 
             return false;
