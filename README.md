@@ -21,7 +21,7 @@ Do you need help or have feedback?  Contact me at joel at maraudersoftware.com d
 Always add Regex and return object in order from most specific to least specific.  The first match found will be used and the associated object will be returned.
 
 ## Simple Example
-```
+```csharp
 using RegexMatcher;
 
 static void Main(string[] args)
@@ -38,15 +38,24 @@ static void Main(string[] args)
     matcher.Add(new Regex("^/bar/?$"), "bar with optional slash");
     matcher.Add(new Regex("^/bar$"), "bar alone");
 
-    object val;
-    if (matcher.Match("/bar/child/foo", out val))
-    { // val is "bar with two children" }
+    if (matcher.Match("/bar/child/foo", out object val1))
+    { 
+        // val is "bar with two children" 
+    }
 
-    if (matcher.Match("/foo/36", out val))
-    { // val is "foo with id" }
+    if (matcher.Match("/foo/36", out object val2))
+    { 
+        // val is "foo with id" 
+    }
 
-    if (matcher.Match("/unknown", out val)) { }
-    else Console.WriteLine("Not found");
+    if (matcher.Match("/unknown", out object val3)) 
+    { 
+        // won't get here
+    }
+    else
+    {
+        Console.WriteLine("Not found");
+    }
 }
 ```
 
