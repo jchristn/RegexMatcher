@@ -72,6 +72,14 @@ Some notes that I found helpful which may help you too:
 - ```\\``` the escape character must be used when matching certain characters as a literal
 - ```?``` marks the previous character or expression as optional
 
+## Multiple Matches
+
+The library behavior when multiple matches are found can be configured using the ```Matcher.MatchPreference``` property.
+
+- ```First``` returns the first match
+- ```LongestFirst``` will return the longest match
+- ```ShortestFirst``` will return the shortest match
+
 Helpful links:
 
 - https://msdn.microsoft.com/en-us/library/gg578045(v=vs.110).aspx
