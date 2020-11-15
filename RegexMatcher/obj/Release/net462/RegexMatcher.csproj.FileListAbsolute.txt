@@ -13,3 +13,4 @@ C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\net462\RegexMatcher.AssemblyI
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\net462\RegexMatcher.AssemblyInfo.cs
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\net462\RegexMatcher.dll
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\net462\RegexMatcher.pdb
+C:\code\Misc\RegexMatcher\RegexMatcher\obj\Release\net462\RegexMatcher.csproj.CoreCompileInputs.cache

@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netcoreapp2.0;net462</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;netcoreapp2.0;netcoreapp3.0;netcoreapp3.1;net462;net5.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.5</Version>
+    <Version>1.0.7</Version>
     <Authors>Joel Christner</Authors>
     <Company>Joel Christner</Company>
     <Copyright>(c)2019 Joel Christner</Copyright>

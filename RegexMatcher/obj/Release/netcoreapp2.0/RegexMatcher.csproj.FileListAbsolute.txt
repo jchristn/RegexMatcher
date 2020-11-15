@@ -6,3 +6,4 @@ C:\code\Misc\RegexMatcher\RegexMatcher\obj\Release\netcoreapp2.0\RegexMatcher.As
 C:\code\Misc\RegexMatcher\RegexMatcher\obj\Release\netcoreapp2.0\RegexMatcher.dll
 C:\code\Misc\RegexMatcher\RegexMatcher\obj\Release\netcoreapp2.0\RegexMatcher.pdb
 C:\code\Misc\RegexMatcher\RegexMatcher\obj\Release\netcoreapp2.0\RegexMatcher.csprojAssemblyReference.cache
+C:\code\Misc\RegexMatcher\RegexMatcher\obj\Release\netcoreapp2.0\RegexMatcher.csproj.CoreCompileInputs.cache
