@@ -5,10 +5,14 @@ C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Debug\net462\RegexMatcher.Ass
 C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Debug\net462\RegexMatcher.AssemblyInfo.cs
 C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Debug\net462\RegexMatcher.dll
 C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Debug\net462\RegexMatcher.pdb
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\net462\Assets\icon.ico
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\net462\Assets\icon.png
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\net462\LICENSE.md
 C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\net462\RegexMatcher.dll
 C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\net462\RegexMatcher.pdb
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\net462\RegexMatcher.GeneratedMSBuildEditorConfig.editorconfig
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\net462\RegexMatcher.AssemblyInfoInputs.cache
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\net462\RegexMatcher.AssemblyInfo.cs
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\net462\RegexMatcher.csproj.CoreCompileInputs.cache
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\net462\RegexMatcher.dll
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\net462\RegexMatcher.pdb
-C:\code\Misc\RegexMatcher\RegexMatcher\obj\Debug\net462\RegexMatcher.csprojAssemblyReference.cache

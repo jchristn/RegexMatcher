@@ -10,7 +10,7 @@
       "Test/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "2.0.3",
-          "RegexMatcher": "1.0.5"
+          "RegexMatcher": "1.0.7.1"
         },
         "runtime": {
           "Test.dll": {}
@@ -22,7 +22,7 @@
           "Microsoft.NETCore.Platforms": "1.1.0"
         }
       },
-      "RegexMatcher/1.0.5": {
+      "RegexMatcher/1.0.7.1": {
         "runtime": {
           "RegexMatcher.dll": {}
         }
@@ -49,7 +49,7 @@
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
-    "RegexMatcher/1.0.5": {
+    "RegexMatcher/1.0.7.1": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

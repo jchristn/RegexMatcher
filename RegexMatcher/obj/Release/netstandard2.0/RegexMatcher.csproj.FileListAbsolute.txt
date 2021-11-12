@@ -10,10 +10,14 @@ C:\code\Misc\RegexMatcherRetarget\RegexMatcher\obj\Release\netstandard2.0\RegexM
 C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Release\netstandard2.0\RegexMatcher.deps.json
 C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Release\netstandard2.0\RegexMatcher.dll
 C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Release\netstandard2.0\RegexMatcher.pdb
-C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\netstandard2.0\RegexMatcher.csprojAssemblyReference.cache
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\netstandard2.0\RegexMatcher.AssemblyInfoInputs.cache
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\netstandard2.0\RegexMatcher.AssemblyInfo.cs
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\netstandard2.0\RegexMatcher.dll
 C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\netstandard2.0\RegexMatcher.pdb
 C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Release\netstandard2.0\RegexMatcher.xml
 C:\code\Misc\RegexMatcher\RegexMatcher\obj\Release\netstandard2.0\RegexMatcher.csproj.CoreCompileInputs.cache
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Release\netstandard2.0\Assets\icon.ico
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Release\netstandard2.0\Assets\icon.png
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Release\netstandard2.0\LICENSE.md
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\netstandard2.0\RegexMatcher.csproj.AssemblyReference.cache
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Release\netstandard2.0\RegexMatcher.GeneratedMSBuildEditorConfig.editorconfig

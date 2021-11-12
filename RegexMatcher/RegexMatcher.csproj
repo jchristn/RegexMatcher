@@ -1,32 +1,50 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;netcoreapp2.0;netcoreapp3.0;netcoreapp3.1;net462;net5.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;netcoreapp3.1;net462;net5.0;net6.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.7</Version>
+    <Version>1.0.7.1</Version>
     <Authors>Joel Christner</Authors>
     <Company>Joel Christner</Company>
-    <Copyright>(c)2019 Joel Christner</Copyright>
-    <PackageLicenseUrl></PackageLicenseUrl>
+    <Copyright>(c)2021 Joel Christner</Copyright>
     <PackageProjectUrl>https://github.com/jchristn/regexmatcher</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jchristn/regexmatcher</RepositoryUrl>
     <RepositoryType>Github</RepositoryType>
     <PackageTags>regex match regular expression</PackageTags>
-    <PackageReleaseNotes>Sort mode and additional targets</PackageReleaseNotes>
+    <PackageReleaseNotes>.NET 6.0 support</PackageReleaseNotes>
     <Description>Regular expression matching library.</Description>
-    <PackageIconUrl>https://raw.githubusercontent.com/jchristn/regexmatcher/master/assets/icon.ico</PackageIconUrl>
-    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-    <DocumentationFile>C:\Code\Misc\RegexMatcher\RegexMatcher\RegexMatcher.xml</DocumentationFile>
+    <DocumentationFile>RegexMatcher.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\LICENSE.md">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
+	  <Content Include="Assets\icon.ico">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Assets\icon.png">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="LICENSE.md">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+	  <None Update="Assets\icon.png">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+	  </None>
+	  <None Update="Assets\icon.ico">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+	  </None>
+	  <None Update="LICENSE.md">
+		  <Pack>True</Pack>
+		  <PackagePath>\</PackagePath>
+	  </None>
   </ItemGroup>
 
 </Project>

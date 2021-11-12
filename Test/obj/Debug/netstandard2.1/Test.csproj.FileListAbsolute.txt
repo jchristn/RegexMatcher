@@ -1,0 +1,16 @@
+C:\Code\Misc\RegexMatcher\Test\bin\Debug\netstandard2.1\Test.deps.json
+C:\Code\Misc\RegexMatcher\Test\bin\Debug\netstandard2.1\Test.dll
+C:\Code\Misc\RegexMatcher\Test\bin\Debug\netstandard2.1\Test.pdb
+C:\Code\Misc\RegexMatcher\Test\bin\Debug\netstandard2.1\RegexMatcher.dll
+C:\Code\Misc\RegexMatcher\Test\bin\Debug\netstandard2.1\RegexMatcher.pdb
+C:\Code\Misc\RegexMatcher\Test\obj\Debug\netstandard2.1\Test.csproj.AssemblyReference.cache
+C:\Code\Misc\RegexMatcher\Test\obj\Debug\netstandard2.1\Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\Misc\RegexMatcher\Test\obj\Debug\netstandard2.1\Test.AssemblyInfoInputs.cache
+C:\Code\Misc\RegexMatcher\Test\obj\Debug\netstandard2.1\Test.AssemblyInfo.cs
+C:\Code\Misc\RegexMatcher\Test\obj\Debug\netstandard2.1\Test.csproj.CoreCompileInputs.cache
+C:\Code\Misc\RegexMatcher\Test\obj\Debug\netstandard2.1\Test.csproj.CopyComplete
+C:\Code\Misc\RegexMatcher\Test\obj\Debug\netstandard2.1\Test.dll
+C:\Code\Misc\RegexMatcher\Test\obj\Debug\netstandard2.1\Test.pdb
+C:\Code\Misc\RegexMatcher\Test\bin\Debug\netstandard2.1\Assets\icon.ico
+C:\Code\Misc\RegexMatcher\Test\bin\Debug\netstandard2.1\Assets\icon.png
+C:\Code\Misc\RegexMatcher\Test\bin\Debug\netstandard2.1\LICENSE.md

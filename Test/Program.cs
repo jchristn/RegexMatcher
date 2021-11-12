@@ -52,7 +52,7 @@ namespace TestNetCore
                     case "add":
                         _Matcher.Add(
                             new Regex(InputString("Regex:", null, false)),
-                            InputString("Value", null, true));
+                            InputString("Value:", null, true));
                         break;
 
                     case "del":

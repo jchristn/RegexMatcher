@@ -1,21 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "xAzyMz6gXgAfhMr5dByLRilaGCfWZ/eO76YrWLe+uR3+fJL1E0Ly9bKtRF7AZBWjmR5fEyNdiJtApqHdgrAgTw==",
+  "dgSpecHash": "OsErPwqxjUGDi0u+AMfqoEBLO9oDc88b/RNevKawXbZ5jodi6VImxOAsM2gJYMX4JxSlWahoR2ApCLsZskDAMQ==",
   "success": true,
-  "projectFilePath": "C:\\code\\Misc\\RegexMatcher\\Test\\Test.csproj",
+  "projectFilePath": "C:\\Code\\Misc\\RegexMatcher\\Test\\Test.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\joelc\\.nuget\\packages\\microsoft.netcore.app\\2.0.0\\microsoft.netcore.app.2.0.0.nupkg.sha512",
-    "C:\\Users\\joelc\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.0.0\\microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
-    "C:\\Users\\joelc\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.0.0\\microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
-    "C:\\Users\\joelc\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.0.0\\microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\2.0.0\\microsoft.netcore.platforms.2.0.0.nupkg.sha512",
-    "C:\\Users\\joelc\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\joelc\\.nuget\\packages\\runtime.win-x86.microsoft.netcore.app\\2.0.0\\runtime.win-x86.microsoft.netcore.app.2.0.0.nupkg.sha512",
-    "C:\\Users\\joelc\\.nuget\\packages\\runtime.win-x86.microsoft.netcore.dotnetapphost\\2.0.0\\runtime.win-x86.microsoft.netcore.dotnetapphost.2.0.0.nupkg.sha512",
-    "C:\\Users\\joelc\\.nuget\\packages\\runtime.win-x86.microsoft.netcore.dotnethostpolicy\\2.0.0\\runtime.win-x86.microsoft.netcore.dotnethostpolicy.2.0.0.nupkg.sha512",
-    "C:\\Users\\joelc\\.nuget\\packages\\runtime.win-x86.microsoft.netcore.dotnethostresolver\\2.0.0\\runtime.win-x86.microsoft.netcore.dotnethostresolver.2.0.0.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

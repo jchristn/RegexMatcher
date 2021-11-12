@@ -1,0 +1,12 @@
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\netstandard2.1\Assets\icon.ico
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\netstandard2.1\Assets\icon.png
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\netstandard2.1\LICENSE.md
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\netstandard2.1\RegexMatcher.deps.json
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\netstandard2.1\RegexMatcher.dll
+C:\Code\Misc\RegexMatcher\RegexMatcher\bin\Debug\netstandard2.1\RegexMatcher.pdb
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netstandard2.1\RegexMatcher.GeneratedMSBuildEditorConfig.editorconfig
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netstandard2.1\RegexMatcher.AssemblyInfoInputs.cache
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netstandard2.1\RegexMatcher.AssemblyInfo.cs
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netstandard2.1\RegexMatcher.csproj.CoreCompileInputs.cache
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netstandard2.1\RegexMatcher.dll
+C:\Code\Misc\RegexMatcher\RegexMatcher\obj\Debug\netstandard2.1\RegexMatcher.pdb

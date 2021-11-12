@@ -1,0 +1,37 @@
+{
+  "runtimeTarget": {
+    "name": ".NETStandard,Version=v2.1/",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/": {
+      "Test/1.0.0": {
+        "dependencies": {
+          "RegexMatcher": "1.0.7.1"
+        },
+        "runtime": {
+          "Test.dll": {}
+        }
+      },
+      "RegexMatcher/1.0.7.1": {
+        "runtime": {
+          "RegexMatcher.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Test/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "RegexMatcher/1.0.7.1": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
