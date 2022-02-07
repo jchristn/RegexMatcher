@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "RegexMatcher/1.0.7.1": {
+      "RegexMatcher/1.0.7.2": {
         "runtime": {
           "RegexMatcher.dll": {}
         }
@@ -14,7 +14,7 @@
     }
   },
   "libraries": {
-    "RegexMatcher/1.0.7.1": {
+    "RegexMatcher/1.0.7.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "OsErPwqxjUGDi0u+AMfqoEBLO9oDc88b/RNevKawXbZ5jodi6VImxOAsM2gJYMX4JxSlWahoR2ApCLsZskDAMQ==",
+  "dgSpecHash": "nK7nJXNrBxTuoLIZfwjWVv17cEdypeWrEkSTglGe3D4EU1y1K//AxB+O79XmYRWz3CBUScYrUZ8ASxLx5gX+OA==",
   "success": true,
   "projectFilePath": "C:\\Code\\Misc\\RegexMatcher\\Test\\Test.csproj",
   "expectedPackageFiles": [
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\joelc\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\joelc\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\joelc\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.21\\microsoft.netcore.app.host.win-x64.3.1.21.nupkg.sha512",
+    "C:\\Users\\joelc\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.12\\microsoft.netcore.app.host.win-x64.5.0.12.nupkg.sha512"
   ],
   "logs": []
 }

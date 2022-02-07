@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "ZTrxd+FquVKnW/qAwFGQdRX6LHi28NnPBtuCPTGlFITEJdX53mxv7dA1giF8MTMGW+jtVBRG+6d424Dq6i6ziA==",
+  "dgSpecHash": "PKp6+vGZZ/4Zrbhd04XO0mDP0MxZBVEckKIvyl1VAfqFDrYCqv9wznuSoEzqOFwmJrtiq1TFyiXa2pT+qsNnbw==",
   "success": true,
   "projectFilePath": "C:\\Code\\Misc\\RegexMatcher\\RegexMatcher\\RegexMatcher.csproj",
   "expectedPackageFiles": [
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+    "C:\\Users\\joelc\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\joelc\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
   ],
   "logs": []
 }

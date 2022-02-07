@@ -8,13 +8,13 @@
     ".NETCoreApp,Version=v3.1": {
       "Test/1.0.0": {
         "dependencies": {
-          "RegexMatcher": "1.0.7.1"
+          "RegexMatcher": "1.0.7.2"
         },
         "runtime": {
           "Test.dll": {}
         }
       },
-      "RegexMatcher/1.0.7.1": {
+      "RegexMatcher/1.0.7.2": {
         "runtime": {
           "RegexMatcher.dll": {}
         }
@@ -27,7 +27,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "RegexMatcher/1.0.7.1": {
+    "RegexMatcher/1.0.7.2": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
