@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace RegexMatcher
 {
@@ -34,7 +29,7 @@ namespace RegexMatcher
         /// Instantiates the object.
         /// </summary>
         public Matcher()
-        { 
+        {
         }
 
         #endregion
@@ -100,6 +95,33 @@ namespace RegexMatcher
         }
 
         /// <summary>
+        /// extract all Matches result in a list
+        /// </summary>
+        /// <returns></returns>
+        public List<object> ExtractMatchs(string inVal)
+        {
+            if (String.IsNullOrEmpty(inVal)) throw new ArgumentNullException(nameof(inVal));
+            var vals = new List<object>();
+
+            lock (_RegexDictLock)
+            {
+
+                foreach (KeyValuePair<Regex, object> curr in _RegexDict)
+                {
+                    Match match = curr.Key.Match(inVal);
+                    if (match.Success)
+                    {
+                        vals.Add(curr.Value);
+                    }
+                }
+
+                return vals;
+            }
+
+
+        }
+
+        /// <summary>
         /// Check if a value exists in the evaluation dictionary.  Returns true on the first match of the value.
         /// </summary>
         /// <param name="val">Object to match.</param>
@@ -130,7 +152,7 @@ namespace RegexMatcher
 
             lock (_RegexDictLock)
             {
-                Regex bestMatch = null; 
+                Regex bestMatch = null;
 
                 foreach (KeyValuePair<Regex, object> curr in _RegexDict)
                 {
@@ -168,7 +190,7 @@ namespace RegexMatcher
                                     val = curr.Value;
                                 }
                             }
-                        } 
+                        }
                     }
                 }
 
