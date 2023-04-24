@@ -1,3 +1,5 @@
+﻿using System.Collections.Generic;
+using System;
 using System.Text.RegularExpressions;
 
 namespace RegexMatcher
@@ -95,12 +97,13 @@ namespace RegexMatcher
         }
 
         /// <summary>
-        /// extract all Matches result in a list
+        /// Extract all matches for a given input.
         /// </summary>
-        /// <returns></returns>
-        public List<object> ExtractMatchs(string inVal)
+        /// <returns>List of values.</returns>
+        public List<object> AllMatches(string val)
         {
-            if (String.IsNullOrEmpty(inVal)) throw new ArgumentNullException(nameof(inVal));
+            if (String.IsNullOrEmpty(val)) throw new ArgumentNullException(nameof(val));
+
             var vals = new List<object>();
 
             lock (_RegexDictLock)
@@ -108,7 +111,7 @@ namespace RegexMatcher
 
                 foreach (KeyValuePair<Regex, object> curr in _RegexDict)
                 {
-                    Match match = curr.Key.Match(inVal);
+                    Match match = curr.Key.Match(val);
                     if (match.Success)
                     {
                         vals.Add(curr.Value);
@@ -117,8 +120,6 @@ namespace RegexMatcher
 
                 return vals;
             }
-
-
         }
 
         /// <summary>

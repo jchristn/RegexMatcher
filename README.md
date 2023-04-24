@@ -12,9 +12,10 @@ For a sample app exercising the library please refer to the Test project.
 
 Do you need help or have feedback?  Contact me at joel at maraudersoftware.com dot com or file an issue here!
 
-## New in v1.0.5
+## New in v1.0.x
 
 - ```MatchPreference``` property to specify how to handle multiple match scenarios: first match, longest match, or shortest match
+- ```AllMatches``` API, thank you @sapurtcomputer30
 
 ## Important Notes
 

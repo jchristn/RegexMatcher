@@ -45,6 +45,12 @@
             <param name="regex">Regular expression.</param>
             <returns>True if found.</returns>
         </member>
+        <member name="M:RegexMatcher.Matcher.AllMatches(System.String)">
+            <summary>
+            Extract all matches for a given input.
+            </summary>
+            <returns>List of values.</returns>
+        </member>
         <member name="M:RegexMatcher.Matcher.ValueExists(System.Object)">
             <summary>
             Check if a value exists in the evaluation dictionary.  Returns true on the first match of the value.
