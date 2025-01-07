@@ -1,52 +1,59 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;netcoreapp3.1;net462;net48;net6.0;net7.0</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.8</Version>
-    <Authors>Joel Christner</Authors>
-    <Company>Joel Christner</Company>
-    <Copyright>(c)2023 Joel Christner</Copyright>
-    <PackageProjectUrl>https://github.com/jchristn/regexmatcher</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/jchristn/regexmatcher</RepositoryUrl>
-    <RepositoryType>Github</RepositoryType>
-    <PackageTags>regex match regular expression</PackageTags>
-    <PackageReleaseNotes>Retarget, all matches API, thank you @sapurtcomputer30</PackageReleaseNotes>
-    <Description>Regular expression matching library.</Description>
-    <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>C:\Code\Misc\RegexMatcher\src\RegexMatcher.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net462;net48;net6.0;net8.0</TargetFrameworks>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Version>1.0.9</Version>
+		<Authors>Joel Christner</Authors>
+		<Company>Joel Christner</Company>
+		<Copyright>(c)2025 Joel Christner</Copyright>
+		<PackageProjectUrl>https://github.com/jchristn/regexmatcher</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/jchristn/regexmatcher</RepositoryUrl>
+		<RepositoryType>Github</RepositoryType>
+		<PackageTags>regex match regular expression</PackageTags>
+		<PackageReleaseNotes>Retarget, all matches API, thank you @sapurtcomputer30</PackageReleaseNotes>
+		<Description>Regular expression matching library.</Description>
+		<ApplicationIcon>icon.ico</ApplicationIcon>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<DocumentationFile>RegexMatcher.xml</DocumentationFile>
+		<Title>RegexMatcher</Title>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-    <DocumentationFile>RegexMatcher.xml</DocumentationFile>
-  </PropertyGroup>
+	<ItemGroup>
+		<Content Include="icon.ico" />
+		<Content Include="LICENSE.md">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
-	  <Content Include="Assets\icon.ico">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="Assets\icon.png">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="LICENSE.md">
-		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
-  </ItemGroup>
+	<ItemGroup>
+	  <None Include="..\..\assets\icon.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\..\LICENSE.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 
-  <ItemGroup>
-	  <None Update="Assets\icon.png">
-		  <Pack>True</Pack>
-		  <PackagePath>\</PackagePath>
-	  </None>
-	  <None Update="Assets\icon.ico">
-		  <Pack>True</Pack>
-		  <PackagePath>\</PackagePath>
-	  </None>
-	  <None Update="LICENSE.md">
-		  <Pack>True</Pack>
-		  <PackagePath>\</PackagePath>
-	  </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Update="LICENSE.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Update="RegexMatcher.xml">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>
