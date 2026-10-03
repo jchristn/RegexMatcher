@@ -4,7 +4,7 @@
 
 ## Regex Matching Library in C#
 
-RegexMatcher is a library that maintains an internal dictionary of type <Regex, object>.  Populate the dictionary with a series of Regex and the objects that should be returned when a match is found while evaluating some input.
+RegexMatcher is a library that maintains an ordered list of `Regex` and `object` pairs.  Populate it with a series of `Regex` and the objects that should be returned when a match is found while evaluating some input.  All methods are thread-safe.
 
 For examples exercising every API, refer to the test suites in `src/Test.Shared`.
 
@@ -12,14 +12,22 @@ For examples exercising every API, refer to the test suites in `src/Test.Shared`
 
 Do you need help or have feedback?  Contact me at joel at maraudersoftware.com dot com or file an issue here!
 
-## New in v1.0.x
+## New in v1.1.0
 
-- ```MatchPreference``` property to specify how to handle multiple match scenarios: first match, longest match, or shortest match
-- ```AllMatches``` API, thank you @sapurtcomputer30
+- `ValueExists` compares values with `Object.Equals`, so equal strings and boxed value types are found
+- `Get` returns a snapshot copy that is safe to enumerate while other threads modify the matcher
+- Entries are always evaluated in the order they were added, including after removals
+- Retargeted to .NET 8.0 and .NET 10.0 (plus .NET Standard 2.0/2.1 and .NET Framework 4.6.2/4.8)
+
+Refer to CHANGELOG.md for upgrade notes.
 
 ## Important Notes
 
-Always add Regex and return object in order from most specific to least specific.  The first match found will be used and the associated object will be returned.
+Always add Regex and return object in order from most specific to least specific.  Entries are evaluated in the order they were added; with the default `MatchPreference` of `First`, the first match found is used and the associated object is returned.
+
+Regular expressions are identified by instance.  Two distinct `Regex` instances with the same pattern are separate entries, and `Exists` and `Remove` require the same instance that was passed to `Add`.  Adding the same instance twice throws `ArgumentException`.
+
+`Match` and `AllMatches` throw `ArgumentNullException` for null or empty input.  A `RegexMatchTimeoutException` from a `Regex` constructed with a timeout is passed through to the caller.
 
 ## Simple Example
 ```csharp
@@ -67,7 +75,7 @@ RegexMatcher uses standard C#/.NET regular expressions.  I tested primarily agai
 Some notes that I found helpful which may help you too:
 
 - ```^``` is a starting anchor, useful when indicating that the pattern must be matched at the start of the input
-- ```$``` is an ending anchor, useful when indicating that the pattern mst be matched at the end of the input
+- ```$``` is an ending anchor, useful when indicating that the pattern must be matched at the end of the input
 - ```(.*?)``` will match any input string
 - ```\\d+``` will match any number
 - ```\\``` the escape character must be used when matching certain characters as a literal
@@ -77,9 +85,11 @@ Some notes that I found helpful which may help you too:
 
 The library behavior when multiple matches are found can be configured using the ```Matcher.MatchPreference``` property.
 
-- ```First``` returns the first match
-- ```LongestFirst``` will return the longest match
-- ```ShortestFirst``` will return the shortest match
+- ```First``` (default) returns the value for the first matching regex, in insertion order
+- ```LongestFirst``` returns the value for the matching regex with the longest **pattern string**, which usually indicates the most specific pattern
+- ```ShortestFirst``` returns the value for the matching regex with the shortest **pattern string**
+
+`LongestFirst` and `ShortestFirst` compare the length of the regex pattern text, not the length of the matched input.  Ties go to the entry added first.  `AllMatches` ignores `MatchPreference` and returns every matching value in insertion order.
 
 Helpful links:
 

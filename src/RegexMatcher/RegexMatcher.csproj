@@ -3,15 +3,15 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0;netstandard2.1;net462;net48;net8.0;net10.0</TargetFrameworks>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>1.0.10</Version>
+		<Version>1.1.0</Version>
 		<Authors>Joel Christner</Authors>
 		<Company>Joel Christner</Company>
-		<Copyright>(c)2025 Joel Christner</Copyright>
+		<Copyright>(c)2026 Joel Christner</Copyright>
 		<PackageProjectUrl>https://github.com/jchristn/regexmatcher</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/jchristn/regexmatcher</RepositoryUrl>
 		<RepositoryType>Github</RepositoryType>
 		<PackageTags>regex match regular expression</PackageTags>
-		<PackageReleaseNotes>Retarget to net8.0 and net10.0, dropping net6.0 and net7.0</PackageReleaseNotes>
+		<PackageReleaseNotes>ValueExists uses value equality; Get returns a snapshot copy; entries are evaluated in guaranteed insertion order; MatchPreference documentation clarified; retarget to net8.0 and net10.0</PackageReleaseNotes>
 		<Description>Regular expression matching library.</Description>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>

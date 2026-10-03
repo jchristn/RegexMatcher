@@ -142,6 +142,45 @@ namespace Test.Shared
                         TestHelpers.Equal("first", val, "Matched value");
                     }),
 
+                    TestHelpers.Case(_SuiteId, "LongestUsesPatternLength", "LongestFirst compares pattern length, not matched text length", () =>
+                    {
+                        Matcher matcher = new Matcher { MatchPreference = MatchPreferenceType.LongestFirst };
+                        matcher.Add(new Regex("^/x/.*$"), "short pattern, long match");
+                        matcher.Add(new Regex("^/x/[a-c]+"), "long pattern, short match");
+                        TestHelpers.True(matcher.Match("/x/abcdef", out object val), "Match returned false");
+                        TestHelpers.Equal("long pattern, short match", val, "Matched value");
+                    }),
+
+                    TestHelpers.Case(_SuiteId, "ShortestUsesPatternLength", "ShortestFirst compares pattern length, not matched text length", () =>
+                    {
+                        Matcher matcher = new Matcher { MatchPreference = MatchPreferenceType.ShortestFirst };
+                        matcher.Add(new Regex("^/x/[a-c]+"), "long pattern, short match");
+                        matcher.Add(new Regex("^/x/.*$"), "short pattern, long match");
+                        TestHelpers.True(matcher.Match("/x/abcdef", out object val), "Match returned false");
+                        TestHelpers.Equal("short pattern, long match", val, "Matched value");
+                    }),
+
+                    TestHelpers.Case(_SuiteId, "FirstHonorsOrderAfterRemove", "First uses insertion order after entries are removed and added", () =>
+                    {
+                        Matcher matcher = new Matcher { MatchPreference = MatchPreferenceType.First };
+                        List<Regex> regexes = new List<Regex>();
+                        for (int i = 0; i < 10; i++)
+                        {
+                            Regex r = new Regex("^/item");
+                            regexes.Add(r);
+                            matcher.Add(r, i);
+                        }
+                        for (int i = 0; i < 5; i++) matcher.Remove(regexes[i]);
+                        for (int i = 10; i < 15; i++) matcher.Add(new Regex("^/item"), i);
+
+                        TestHelpers.True(matcher.Match("/item", out object val), "Match returned false");
+                        TestHelpers.Equal(5, val, "First remaining value");
+
+                        List<object> all = matcher.AllMatches("/item");
+                        TestHelpers.Equal(10, all.Count, "AllMatches count");
+                        for (int i = 0; i < 10; i++) TestHelpers.Equal(i + 5, all[i], "AllMatches index " + i);
+                    }),
+
                     TestHelpers.Case(_SuiteId, "SingleMatchAllModes", "Every preference returns the only matching value", () =>
                     {
                         foreach (MatchPreferenceType pref in (MatchPreferenceType[])Enum.GetValues(typeof(MatchPreferenceType)))

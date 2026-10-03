@@ -1,5 +1,6 @@
 namespace Test.Shared
 {
+    using System;
     using System.Collections.Generic;
     using System.Text.RegularExpressions;
     using RegexMatcher;
@@ -63,6 +64,29 @@ namespace Test.Shared
                         TestHelpers.True(matcher.ValueExists("c"), "ValueExists returned false");
                     }),
 
+                    TestHelpers.Case(_SuiteId, "ValueExistsEqualString", "ValueExists finds an equal string that is a different instance", () =>
+                    {
+                        Matcher matcher = new Matcher();
+                        matcher.Add(new Regex("^/foo$"), "the-value");
+                        string probe = new string("the-value".ToCharArray());
+                        TestHelpers.False(Object.ReferenceEquals(probe, "the-value"), "Probe should be a distinct instance");
+                        TestHelpers.True(matcher.ValueExists(probe), "ValueExists returned false for an equal string");
+                    }),
+
+                    TestHelpers.Case(_SuiteId, "ValueExistsBoxedValueType", "ValueExists finds an equal boxed value type", () =>
+                    {
+                        Matcher matcher = new Matcher();
+                        matcher.Add(new Regex("^/answer$"), 42);
+                        TestHelpers.True(matcher.ValueExists(42), "ValueExists returned false for boxed int");
+                    }),
+
+                    TestHelpers.Case(_SuiteId, "ValueExistsEqualsOverride", "ValueExists honors a type's Equals override", () =>
+                    {
+                        Matcher matcher = new Matcher();
+                        matcher.Add(new Regex("^/site$"), new Uri("https://example.com/a"));
+                        TestHelpers.True(matcher.ValueExists(new Uri("https://example.com/a")), "ValueExists returned false for an equal Uri");
+                    }),
+
                     // Negative
                     TestHelpers.Case(_SuiteId, "ExistsDifferentInstance", "Exists returns false for a different instance with the same pattern", () =>
                     {
@@ -102,6 +126,28 @@ namespace Test.Shared
                     {
                         Matcher matcher = new Matcher();
                         TestHelpers.False(matcher.ValueExists("foo"), "ValueExists returned true");
+                    }),
+
+                    TestHelpers.Case(_SuiteId, "ValueExistsDifferentValueType", "ValueExists does not match a different value of the same type", () =>
+                    {
+                        Matcher matcher = new Matcher();
+                        matcher.Add(new Regex("^/answer$"), 42);
+                        TestHelpers.False(matcher.ValueExists(43), "ValueExists returned true for 43");
+                    }),
+
+                    TestHelpers.Case(_SuiteId, "ValueExistsDifferentType", "ValueExists does not match a value of a different type with the same text", () =>
+                    {
+                        Matcher matcher = new Matcher();
+                        matcher.Add(new Regex("^/answer$"), 42);
+                        TestHelpers.False(matcher.ValueExists("42"), "ValueExists returned true for string \"42\"");
+                        TestHelpers.False(matcher.ValueExists(42L), "ValueExists returned true for long 42");
+                    }),
+
+                    TestHelpers.Case(_SuiteId, "ValueExistsCaseSensitive", "ValueExists string comparison is case-sensitive", () =>
+                    {
+                        Matcher matcher = new Matcher();
+                        matcher.Add(new Regex("^/foo$"), "Value");
+                        TestHelpers.False(matcher.ValueExists("value"), "ValueExists returned true for different casing");
                     }),
 
                     TestHelpers.Case(_SuiteId, "ValueExistsAfterRemove", "ValueExists returns false after its regex is removed", () =>

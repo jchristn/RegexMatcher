@@ -1,24 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RegexMatcher
+﻿namespace RegexMatcher
 {
     /// <summary>
-    /// Specify how evaluation for a match should behave when multiple matches exist. 
+    /// Specify how evaluation for a match should behave when multiple regular expressions match the input.
     /// </summary>
     public enum MatchPreferenceType
     {
         /// <summary>
-        /// When evaluating for a match and multiple matches are identified, return the first match.
+        /// Return the value for the first matching regular expression, in the order in which entries were added.
         /// </summary>
         First,
         /// <summary>
-        /// When evaluating for a match and multiple matches are identified, return the longest match.
+        /// Return the value for the matching regular expression whose pattern string is longest, which typically indicates the most specific pattern.
+        /// Ties are resolved in favor of the entry added first.
         /// </summary>
         LongestFirst,
         /// <summary>
-        /// When evaluating for a match and multiple matches are identified, return the shortest match.
+        /// Return the value for the matching regular expression whose pattern string is shortest, which typically indicates the least specific pattern.
+        /// Ties are resolved in favor of the entry added first.
         /// </summary>
         ShortestFirst
     }

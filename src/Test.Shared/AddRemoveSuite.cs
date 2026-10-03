@@ -124,6 +124,75 @@ namespace Test.Shared
                         TestHelpers.Equal(0, matcher.Get().Count, "Entry count");
                     }),
 
+                    TestHelpers.Case(_SuiteId, "GetReturnsSnapshot", "Get returns a copy; mutating it does not affect the matcher", () =>
+                    {
+                        Matcher matcher = new Matcher();
+                        Regex foo = new Regex("^/foo$");
+                        matcher.Add(foo, "foo");
+                        Dictionary<Regex, object> snapshot = matcher.Get();
+                        snapshot.Clear();
+                        snapshot.Add(new Regex("^/bar$"), "bar");
+                        TestHelpers.Equal(1, matcher.Get().Count, "Matcher entry count");
+                        TestHelpers.True(matcher.Exists(foo), "Original entry lost");
+                        TestHelpers.False(matcher.Match("/bar", out _), "Entry added to snapshot became matchable");
+                    }),
+
+                    TestHelpers.Case(_SuiteId, "GetSnapshotUnaffectedByLaterChanges", "A previously returned Get snapshot does not change when the matcher changes", () =>
+                    {
+                        Matcher matcher = new Matcher();
+                        Regex foo = new Regex("^/foo$");
+                        matcher.Add(foo, "foo");
+                        Dictionary<Regex, object> snapshot = matcher.Get();
+                        matcher.Add(new Regex("^/bar$"), "bar");
+                        matcher.Remove(foo);
+                        TestHelpers.Equal(1, snapshot.Count, "Snapshot entry count");
+                        TestHelpers.True(snapshot.ContainsKey(foo), "Snapshot lost removed entry");
+                    }),
+
+                    TestHelpers.Case(_SuiteId, "GetPreservesInsertionOrder", "Get enumerates entries in insertion order", () =>
+                    {
+                        Matcher matcher = new Matcher();
+                        matcher.Add(new Regex("^/a$"), "a");
+                        matcher.Add(new Regex("^/b$"), "b");
+                        matcher.Add(new Regex("^/c$"), "c");
+                        List<object> values = new List<object>(matcher.Get().Values);
+                        TestHelpers.Equal("a", values[0], "Index 0");
+                        TestHelpers.Equal("b", values[1], "Index 1");
+                        TestHelpers.Equal("c", values[2], "Index 2");
+                    }),
+
+                    TestHelpers.Case(_SuiteId, "AddAfterRemoveAppendsToEnd", "An entry added after a removal is evaluated last, not in the removed slot", () =>
+                    {
+                        Matcher matcher = new Matcher();
+                        Regex one = new Regex("^/x");
+                        matcher.Add(one, "one");
+                        matcher.Add(new Regex("^/x/"), "two");
+                        matcher.Remove(one);
+                        matcher.Add(new Regex("x"), "three");
+
+                        TestHelpers.True(matcher.Match("/x/1", out object val), "Match returned false");
+                        TestHelpers.Equal("two", val, "First preference after remove and add");
+
+                        List<object> all = matcher.AllMatches("/x/1");
+                        TestHelpers.Equal(2, all.Count, "AllMatches count");
+                        TestHelpers.Equal("two", all[0], "AllMatches index 0");
+                        TestHelpers.Equal("three", all[1], "AllMatches index 1");
+                    }),
+
+                    TestHelpers.Case(_SuiteId, "RemoveMiddlePreservesOrder", "Removing a middle entry preserves the order of the remaining entries", () =>
+                    {
+                        Matcher matcher = new Matcher();
+                        Regex b = new Regex("b");
+                        matcher.Add(new Regex("a"), "a");
+                        matcher.Add(b, "b");
+                        matcher.Add(new Regex("c"), "c");
+                        matcher.Remove(b);
+                        List<object> all = matcher.AllMatches("abc");
+                        TestHelpers.Equal(2, all.Count, "AllMatches count");
+                        TestHelpers.Equal("a", all[0], "Index 0");
+                        TestHelpers.Equal("c", all[1], "Index 1");
+                    }),
+
                     // Negative
                     TestHelpers.Case(_SuiteId, "AddNullRegexThrows", "Add with null regex throws ArgumentNullException", () =>
                     {
@@ -139,7 +208,9 @@ namespace Test.Shared
                         Matcher matcher = new Matcher();
                         Regex regex = new Regex("^/foo$");
                         matcher.Add(regex, "first");
-                        TestHelpers.Throws<ArgumentException>(() => matcher.Add(regex, "second"), "Duplicate Add");
+                        ArgumentException ex = TestHelpers.Throws<ArgumentException>(() => matcher.Add(regex, "second"), "Duplicate Add");
+                        TestHelpers.Equal("regex", ex.ParamName, "ParamName");
+                        TestHelpers.True(ex.Message.Contains("^/foo$"), "Message does not identify the pattern");
                         TestHelpers.Equal(1, matcher.Get().Count, "Entry count");
                         TestHelpers.Equal("first", matcher.Get()[regex], "Original value was overwritten");
                     }),

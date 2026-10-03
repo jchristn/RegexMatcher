@@ -39,6 +39,44 @@ namespace Test.Shared
                         }
                     }),
 
+                    TestHelpers.Case(_SuiteId, "EnumerateGetDuringWrites", "Enumerating a Get snapshot while other threads modify the matcher does not throw", () =>
+                    {
+                        Matcher matcher = new Matcher();
+                        for (int i = 0; i < 50; i++) matcher.Add(new Regex("^/seed/" + i + "$"), i);
+                        int iterations = 500;
+                        int errors = 0;
+
+                        Task writer = Task.Run(() =>
+                        {
+                            for (int i = 0; i < iterations; i++)
+                            {
+                                Regex regex = new Regex("^/temp/" + i + "$");
+                                matcher.Add(regex, i);
+                                matcher.Remove(regex);
+                            }
+                        });
+
+                        Task reader = Task.Run(() =>
+                        {
+                            for (int i = 0; i < iterations; i++)
+                            {
+                                try
+                                {
+                                    int seen = 0;
+                                    foreach (KeyValuePair<Regex, object> entry in matcher.Get()) seen++;
+                                    if (seen < 50) Interlocked.Increment(ref errors);
+                                }
+                                catch (InvalidOperationException)
+                                {
+                                    Interlocked.Increment(ref errors);
+                                }
+                            }
+                        });
+
+                        Task.WaitAll(writer, reader);
+                        TestHelpers.Equal(0, errors, "Errors while enumerating snapshots");
+                    }),
+
                     TestHelpers.Case(_SuiteId, "ParallelAddRemoveMatch", "Concurrent Add, Remove, Match, AllMatches, Exists, and ValueExists do not throw", () =>
                     {
                         Matcher matcher = new Matcher();

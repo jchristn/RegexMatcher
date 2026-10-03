@@ -1,18 +1,21 @@
-﻿using System.Collections.Generic;
-using System;
-using System.Text.RegularExpressions;
-
-namespace RegexMatcher
+﻿namespace RegexMatcher
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text.RegularExpressions;
+
     /// <summary>
     /// Library to store regular expressions with a supplied object, and return that object when evaluating an input and a matching regular expression is found.
+    /// Entries are evaluated in the order in which they were added.
+    /// All methods are thread-safe.
     /// </summary>
     public class Matcher
     {
         #region Public-Members
 
         /// <summary>
-        /// Specify which sorting mode should be used when evaluating for a match.
+        /// Specify how a match is selected when multiple regular expressions match the input.
+        /// Default is MatchPreferenceType.First.
         /// </summary>
         public MatchPreferenceType MatchPreference = MatchPreferenceType.First;
 
@@ -20,8 +23,9 @@ namespace RegexMatcher
 
         #region Private-Members
 
-        private Dictionary<Regex, object> _RegexDict = new Dictionary<Regex, object>();
-        private readonly object _RegexDictLock = new object();
+        private readonly List<KeyValuePair<Regex, object>> _Entries = new List<KeyValuePair<Regex, object>>();
+        private readonly HashSet<Regex> _Keys = new HashSet<Regex>();
+        private readonly object _Lock = new object();
 
         #endregion
 
@@ -39,101 +43,117 @@ namespace RegexMatcher
         #region Public-Methods
 
         /// <summary>
-        /// Add a regular expression and return value to the evaluation dictionary.
+        /// Add a regular expression and return value to the end of the evaluation list.
+        /// Regular expressions are identified by instance; two distinct Regex instances with the same pattern are separate entries.
         /// </summary>
-        /// <param name="regex">Regular expression.</param>
-        /// <param name="val">Value to return when a match is found.</param>
+        /// <param name="regex">Regular expression.  Must not be null.</param>
+        /// <param name="val">Value to return when a match is found.  May be null.</param>
+        /// <exception cref="ArgumentNullException">Thrown when regex is null.</exception>
+        /// <exception cref="ArgumentException">Thrown when the same Regex instance has already been added.</exception>
         public void Add(Regex regex, object val)
         {
             if (regex == null) throw new ArgumentNullException(nameof(regex));
 
-            lock (_RegexDictLock)
+            lock (_Lock)
             {
-                _RegexDict.Add(regex, val);
+                if (!_Keys.Add(regex))
+                    throw new ArgumentException("The supplied Regex instance with pattern '" + regex.ToString() + "' has already been added.", nameof(regex));
+
+                _Entries.Add(new KeyValuePair<Regex, object>(regex, val));
             }
         }
 
         /// <summary>
-        /// Remove a regular expression from the evaluation dictionary.
+        /// Remove a regular expression from the evaluation list.  No action is taken if the Regex instance is not present.
         /// </summary>
-        /// <param name="regex">Regular expression.</param>
+        /// <param name="regex">Regular expression.  Must not be null.</param>
+        /// <exception cref="ArgumentNullException">Thrown when regex is null.</exception>
         public void Remove(Regex regex)
         {
             if (regex == null) throw new ArgumentNullException(nameof(regex));
 
-            lock (_RegexDictLock)
+            lock (_Lock)
             {
-                if (_RegexDict.ContainsKey(regex)) _RegexDict.Remove(regex);
+                if (!_Keys.Remove(regex)) return;
+
+                for (int i = 0; i < _Entries.Count; i++)
+                {
+                    if (Object.ReferenceEquals(_Entries[i].Key, regex))
+                    {
+                        _Entries.RemoveAt(i);
+                        break;
+                    }
+                }
             }
         }
 
         /// <summary>
-        /// Retrieve the evaluation dictionary.
+        /// Retrieve a snapshot copy of the evaluation dictionary.
+        /// Changes made to the returned dictionary do not affect the matcher, and the snapshot is safe to enumerate while other threads modify the matcher.
         /// </summary>
-        /// <returns>Dictionary containing regular expression and return value that is returned upon match.</returns>
+        /// <returns>Dictionary containing each regular expression and the value returned upon match.  Never null.</returns>
         public Dictionary<Regex, object> Get()
         {
-            lock (_RegexDictLock)
+            lock (_Lock)
             {
-                return _RegexDict;
+                Dictionary<Regex, object> ret = new Dictionary<Regex, object>(_Entries.Count);
+                foreach (KeyValuePair<Regex, object> entry in _Entries) ret.Add(entry.Key, entry.Value);
+                return ret;
             }
         }
 
         /// <summary>
-        /// Check if a regular expression exists in the evaluation dictionary.
+        /// Check if a regular expression instance exists in the evaluation list.
         /// </summary>
-        /// <param name="regex">Regular expression.</param>
+        /// <param name="regex">Regular expression.  Null returns false.</param>
         /// <returns>True if found.</returns>
         public bool Exists(Regex regex)
         {
             if (regex == null) return false;
 
-            lock (_RegexDictLock)
+            lock (_Lock)
             {
-                if (_RegexDict.ContainsKey(regex)) return true;
+                return _Keys.Contains(regex);
             }
-
-            return false;
         }
 
         /// <summary>
-        /// Extract all matches for a given input.
+        /// Retrieve the values for every regular expression that matches the input, in the order in which they were added.
+        /// MatchPreference does not affect this method.
         /// </summary>
-        /// <returns>List of values.</returns>
+        /// <param name="val">The string to evaluate.  Must not be null or empty.</param>
+        /// <returns>List of values.  Empty if no regular expression matches.  Never null.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when val is null or empty.</exception>
+        /// <exception cref="RegexMatchTimeoutException">Thrown when a regular expression with a timeout exceeds it.</exception>
         public List<object> AllMatches(string val)
         {
             if (String.IsNullOrEmpty(val)) throw new ArgumentNullException(nameof(val));
 
-            var vals = new List<object>();
+            List<object> vals = new List<object>();
 
-            lock (_RegexDictLock)
+            lock (_Lock)
             {
-
-                foreach (KeyValuePair<Regex, object> curr in _RegexDict)
+                foreach (KeyValuePair<Regex, object> entry in _Entries)
                 {
-                    Match match = curr.Key.Match(val);
-                    if (match.Success)
-                    {
-                        vals.Add(curr.Value);
-                    }
+                    if (entry.Key.IsMatch(val)) vals.Add(entry.Value);
                 }
-
-                return vals;
             }
+
+            return vals;
         }
 
         /// <summary>
-        /// Check if a value exists in the evaluation dictionary.  Returns true on the first match of the value.
+        /// Check if a value exists in the evaluation list.  Values are compared using Object.Equals, so equal strings and boxed value types are found.
         /// </summary>
-        /// <param name="val">Object to match.</param>
+        /// <param name="val">Object to match.  May be null, in which case true is returned if any entry has a null value.</param>
         /// <returns>True if found.</returns>
         public bool ValueExists(object val)
         {
-            lock (_RegexDictLock)
+            lock (_Lock)
             {
-                foreach (KeyValuePair<Regex, object> curr in _RegexDict)
+                foreach (KeyValuePair<Regex, object> entry in _Entries)
                 {
-                    if (curr.Value == val) return true;
+                    if (Object.Equals(entry.Value, val)) return true;
                 }
             }
 
@@ -141,69 +161,46 @@ namespace RegexMatcher
         }
 
         /// <summary>
-        /// Evaluate the supplied string against the evaluation dictionary.
+        /// Evaluate the supplied string against the evaluation list.
+        /// When multiple regular expressions match, MatchPreference determines which value is returned.
         /// </summary>
-        /// <param name="inVal">The string to evaluate.</param>
-        /// <param name="val">The object value mapped to the regular expression in the evaluation dictionary.</param>
+        /// <param name="inVal">The string to evaluate.  Must not be null or empty.</param>
+        /// <param name="val">The object value mapped to the selected regular expression, or null if no match was found.</param>
         /// <returns>True if a match was found.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when inVal is null or empty.</exception>
+        /// <exception cref="RegexMatchTimeoutException">Thrown when a regular expression with a timeout exceeds it.</exception>
         public bool Match(string inVal, out object val)
         {
             if (String.IsNullOrEmpty(inVal)) throw new ArgumentNullException(nameof(inVal));
             val = null;
 
-            lock (_RegexDictLock)
+            lock (_Lock)
             {
+                MatchPreferenceType pref = MatchPreference;
                 Regex bestMatch = null;
 
-                foreach (KeyValuePair<Regex, object> curr in _RegexDict)
+                foreach (KeyValuePair<Regex, object> entry in _Entries)
                 {
-                    Match match = curr.Key.Match(inVal);
-                    if (match.Success)
+                    if (!entry.Key.IsMatch(inVal)) continue;
+
+                    if (pref == MatchPreferenceType.First)
                     {
-                        if (MatchPreference == MatchPreferenceType.First)
-                        {
-                            val = curr.Value;
-                            return true;
-                        }
+                        val = entry.Value;
+                        return true;
+                    }
 
-                        if (bestMatch == null)
-                        {
-                            bestMatch = curr.Key;
-                            val = curr.Value;
-                        }
-                        else
-                        {
-                            string regex = curr.Key.ToString();
-
-                            if (MatchPreference == MatchPreferenceType.LongestFirst)
-                            {
-                                if (curr.Key.ToString().Length > bestMatch.ToString().Length)
-                                {
-                                    bestMatch = curr.Key;
-                                    val = curr.Value;
-                                }
-                            }
-                            else if (MatchPreference == MatchPreferenceType.ShortestFirst)
-                            {
-                                if (curr.Key.ToString().Length < bestMatch.ToString().Length)
-                                {
-                                    bestMatch = curr.Key;
-                                    val = curr.Value;
-                                }
-                            }
-                        }
+                    if (bestMatch == null
+                        || (pref == MatchPreferenceType.LongestFirst && entry.Key.ToString().Length > bestMatch.ToString().Length)
+                        || (pref == MatchPreferenceType.ShortestFirst && entry.Key.ToString().Length < bestMatch.ToString().Length))
+                    {
+                        bestMatch = entry.Key;
+                        val = entry.Value;
                     }
                 }
 
-                if (bestMatch != null) return true;
+                return bestMatch != null;
             }
-
-            return false;
         }
-
-        #endregion
-
-        #region Private-Methods
 
         #endregion
     }

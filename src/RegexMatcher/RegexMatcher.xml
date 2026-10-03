@@ -7,11 +7,14 @@
         <member name="T:RegexMatcher.Matcher">
             <summary>
             Library to store regular expressions with a supplied object, and return that object when evaluating an input and a matching regular expression is found.
+            Entries are evaluated in the order in which they were added.
+            All methods are thread-safe.
             </summary>
         </member>
         <member name="F:RegexMatcher.Matcher.MatchPreference">
             <summary>
-            Specify which sorting mode should be used when evaluating for a match.
+            Specify how a match is selected when multiple regular expressions match the input.
+            Default is MatchPreferenceType.First.
             </summary>
         </member>
         <member name="M:RegexMatcher.Matcher.#ctor">
@@ -21,69 +24,83 @@
         </member>
         <member name="M:RegexMatcher.Matcher.Add(System.Text.RegularExpressions.Regex,System.Object)">
             <summary>
-            Add a regular expression and return value to the evaluation dictionary.
+            Add a regular expression and return value to the end of the evaluation list.
+            Regular expressions are identified by instance; two distinct Regex instances with the same pattern are separate entries.
             </summary>
-            <param name="regex">Regular expression.</param>
-            <param name="val">Value to return when a match is found.</param>
+            <param name="regex">Regular expression.  Must not be null.</param>
+            <param name="val">Value to return when a match is found.  May be null.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when regex is null.</exception>
+            <exception cref="T:System.ArgumentException">Thrown when the same Regex instance has already been added.</exception>
         </member>
         <member name="M:RegexMatcher.Matcher.Remove(System.Text.RegularExpressions.Regex)">
             <summary>
-            Remove a regular expression from the evaluation dictionary.
+            Remove a regular expression from the evaluation list.  No action is taken if the Regex instance is not present.
             </summary>
-            <param name="regex">Regular expression.</param>
+            <param name="regex">Regular expression.  Must not be null.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when regex is null.</exception>
         </member>
         <member name="M:RegexMatcher.Matcher.Get">
             <summary>
-            Retrieve the evaluation dictionary.
+            Retrieve a snapshot copy of the evaluation dictionary.
+            Changes made to the returned dictionary do not affect the matcher, and the snapshot is safe to enumerate while other threads modify the matcher.
             </summary>
-            <returns>Dictionary containing regular expression and return value that is returned upon match.</returns>
+            <returns>Dictionary containing each regular expression and the value returned upon match.  Never null.</returns>
         </member>
         <member name="M:RegexMatcher.Matcher.Exists(System.Text.RegularExpressions.Regex)">
             <summary>
-            Check if a regular expression exists in the evaluation dictionary.
+            Check if a regular expression instance exists in the evaluation list.
             </summary>
-            <param name="regex">Regular expression.</param>
+            <param name="regex">Regular expression.  Null returns false.</param>
             <returns>True if found.</returns>
         </member>
         <member name="M:RegexMatcher.Matcher.AllMatches(System.String)">
             <summary>
-            Extract all matches for a given input.
+            Retrieve the values for every regular expression that matches the input, in the order in which they were added.
+            MatchPreference does not affect this method.
             </summary>
-            <returns>List of values.</returns>
+            <param name="val">The string to evaluate.  Must not be null or empty.</param>
+            <returns>List of values.  Empty if no regular expression matches.  Never null.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when val is null or empty.</exception>
+            <exception cref="T:System.Text.RegularExpressions.RegexMatchTimeoutException">Thrown when a regular expression with a timeout exceeds it.</exception>
         </member>
         <member name="M:RegexMatcher.Matcher.ValueExists(System.Object)">
             <summary>
-            Check if a value exists in the evaluation dictionary.  Returns true on the first match of the value.
+            Check if a value exists in the evaluation list.  Values are compared using Object.Equals, so equal strings and boxed value types are found.
             </summary>
-            <param name="val">Object to match.</param>
+            <param name="val">Object to match.  May be null, in which case true is returned if any entry has a null value.</param>
             <returns>True if found.</returns>
         </member>
         <member name="M:RegexMatcher.Matcher.Match(System.String,System.Object@)">
             <summary>
-            Evaluate the supplied string against the evaluation dictionary.
+            Evaluate the supplied string against the evaluation list.
+            When multiple regular expressions match, MatchPreference determines which value is returned.
             </summary>
-            <param name="inVal">The string to evaluate.</param>
-            <param name="val">The object value mapped to the regular expression in the evaluation dictionary.</param>
+            <param name="inVal">The string to evaluate.  Must not be null or empty.</param>
+            <param name="val">The object value mapped to the selected regular expression, or null if no match was found.</param>
             <returns>True if a match was found.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when inVal is null or empty.</exception>
+            <exception cref="T:System.Text.RegularExpressions.RegexMatchTimeoutException">Thrown when a regular expression with a timeout exceeds it.</exception>
         </member>
         <member name="T:RegexMatcher.MatchPreferenceType">
             <summary>
-            Specify how evaluation for a match should behave when multiple matches exist. 
+            Specify how evaluation for a match should behave when multiple regular expressions match the input.
             </summary>
         </member>
         <member name="F:RegexMatcher.MatchPreferenceType.First">
             <summary>
-            When evaluating for a match and multiple matches are identified, return the first match.
+            Return the value for the first matching regular expression, in the order in which entries were added.
             </summary>
         </member>
         <member name="F:RegexMatcher.MatchPreferenceType.LongestFirst">
             <summary>
-            When evaluating for a match and multiple matches are identified, return the longest match.
+            Return the value for the matching regular expression whose pattern string is longest, which typically indicates the most specific pattern.
+            Ties are resolved in favor of the entry added first.
             </summary>
         </member>
         <member name="F:RegexMatcher.MatchPreferenceType.ShortestFirst">
             <summary>
-            When evaluating for a match and multiple matches are identified, return the shortest match.
+            Return the value for the matching regular expression whose pattern string is shortest, which typically indicates the least specific pattern.
+            Ties are resolved in favor of the entry added first.
             </summary>
         </member>
     </members>
