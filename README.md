@@ -12,6 +12,10 @@ For examples exercising every API, refer to the test suites in `src/Test.Shared`
 
 Do you need help or have feedback?  Contact me at joel at maraudersoftware.com dot com or file an issue here!
 
+## New in v1.1.1
+
+- Test dependency updates (Touchstone 0.2.0, NUnit 5.0.0, Microsoft.NET.Test.Sdk 18.10.1, and others); no changes to the library or its public API
+
 ## New in v1.1.0
 
 - `ValueExists` compares values with `Object.Equals`, so equal strings and boxed value types are found

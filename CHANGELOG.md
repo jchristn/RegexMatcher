@@ -2,6 +2,15 @@
 
 ## Current Version
 
+v1.1.1
+
+- Test dependency updates; no changes to the library code or public API, and the package has no new runtime dependencies
+  - Touchstone.Core, Touchstone.Cli, Touchstone.XunitAdapter, Touchstone.NunitAdapter 0.1.12 -> 0.2.0
+  - NUnit 4.3.2 -> 5.0.0, NUnit.Analyzers 4.7.0 -> 4.15.0, NUnit3TestAdapter 5.0.0 -> 6.3.0
+  - Microsoft.NET.Test.Sdk 17.14.1 -> 18.10.1, coverlet.collector 6.0.4 -> 10.1.0, xunit.runner.visualstudio 3.1.4 -> 4.0.0
+
+## Previous Versions
+
 v1.1.0
 
 - Behavior change: `ValueExists` now compares values with `Object.Equals` instead of reference equality, so equal strings and boxed value types (for example `ValueExists(42)`) are found
@@ -12,8 +21,6 @@ v1.1.0
 - XML documentation for exceptions and thread safety
 - Retarget to net8.0 and net10.0, dropping net6.0 and net7.0
 - Test infrastructure migrated to Touchstone (Test.Shared, Test.Automated, Test.Xunit, Test.Nunit) with expanded positive and negative coverage
-
-## Previous Versions
 
 v1.0.x
 

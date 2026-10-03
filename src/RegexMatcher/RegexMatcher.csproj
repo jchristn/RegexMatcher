@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<TargetFrameworks>netstandard2.0;netstandard2.1;net462;net48;net8.0;net10.0</TargetFrameworks>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<Version>1.1.0</Version>
+		<Version>1.1.1</Version>
 		<Authors>Joel Christner</Authors>
 		<Company>Joel Christner</Company>
 		<Copyright>(c)2026 Joel Christner</Copyright>
@@ -11,7 +11,7 @@
 		<RepositoryUrl>https://github.com/jchristn/regexmatcher</RepositoryUrl>
 		<RepositoryType>Github</RepositoryType>
 		<PackageTags>regex match regular expression</PackageTags>
-		<PackageReleaseNotes>ValueExists uses value equality; Get returns a snapshot copy; entries are evaluated in guaranteed insertion order; MatchPreference documentation clarified; retarget to net8.0 and net10.0</PackageReleaseNotes>
+		<PackageReleaseNotes>Test dependency updates (Touchstone 0.2.0, NUnit 5.0.0, Microsoft.NET.Test.Sdk 18.10.1); no library or API changes</PackageReleaseNotes>
 		<Description>Regular expression matching library.</Description>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
