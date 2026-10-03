@@ -4,6 +4,7 @@
 
 v1.0.x
 
+- Test infrastructure migrated to Touchstone (Test.Shared, Test.Automated, Test.Xunit, Test.Nunit) with expanded positive and negative coverage
 - ```MatchPreference``` property to specify how to handle multiple match scenarios: first match, longest match, or shortest match
 - ```AllMatches``` API, thank you @sapurtcomputer30
 - XML documentation

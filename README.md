@@ -6,7 +6,7 @@
 
 RegexMatcher is a library that maintains an internal dictionary of type <Regex, object>.  Populate the dictionary with a series of Regex and the objects that should be returned when a match is found while evaluating some input.
 
-For a sample app exercising the library please refer to the Test project. 
+For examples exercising every API, refer to the test suites in `src/Test.Shared`.
 
 ## Help or Feedback
 
@@ -85,6 +85,22 @@ Helpful links:
 
 - https://msdn.microsoft.com/en-us/library/gg578045(v=vs.110).aspx
 - https://msdn.microsoft.com/en-us/library/h5181w5w(v=vs.110).aspx
+
+## Running Tests
+
+Tests are written once as [Touchstone](https://github.com/jchristn/touchstone) descriptors in `src/Test.Shared` and run through any of three runners:
+
+```bash
+# Console runner (exit code 0 on success, 1 on failure)
+dotnet run --project src/Test.Automated -f net8.0
+
+# Export results to JSON
+dotnet run --project src/Test.Automated -f net8.0 -- --results results.json
+
+# xUnit and NUnit runners
+dotnet test src/Test.Xunit
+dotnet test src/Test.Nunit
+```
 
 ## Version History
 
